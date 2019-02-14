@@ -5,7 +5,6 @@ import (
 	"io/ioutil"
 	"net/http"
 	"strconv"
-	"sync"
 	"syscall/js"
 )
 
@@ -49,11 +48,10 @@ func registerCallbacks() {
 }
 
 func main() {
-	var wg sync.WaitGroup
-	wg.Add(1)
+	ch := make(chan (struct{}))
 
 	println("Go WebAssembly Initialized 2")
 	registerCallbacks()
 
-	wg.Wait()
+	<-ch
 }
