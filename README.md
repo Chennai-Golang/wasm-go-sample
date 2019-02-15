@@ -3,8 +3,8 @@ Go WASM Sample Code
 
 ## To run
 
-  $ ./setup.sh
-  $ ./server
+    $ ./setup.sh
+    $ ./server
 
 Open https://localhost:8000 in the browser.
 
