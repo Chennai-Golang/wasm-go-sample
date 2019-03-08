@@ -50,7 +50,7 @@ func registerCallbacks() {
 func main() {
 	ch := make(chan (struct{}))
 
-	println("Go WebAssembly Initialized 2")
+	fmt.Println("Go WebAssembly Initialized 2")
 	registerCallbacks()
 
 	<-ch
