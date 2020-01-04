@@ -1,8 +1,7 @@
-const go = new Go();
-
-let mod, inst;
-
 // Loads Go compiled wasm file
+
+const go = new Go();
+let mod, inst;
 
 WebAssembly.instantiateStreaming(fetch("go.wasm"), go.importObject).then(async (result) => {
   mod = result.module;
