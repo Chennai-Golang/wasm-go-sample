@@ -20,31 +20,37 @@ func setValue(value int, fieldID js.Value) {
 	js.Global().Get("document").Call("getElementById", fieldID.String()).Set("value", value)
 }
 
-func add(i []js.Value) {
+func add(this js.Value, i []js.Value) interface{} {
 	value1 := getValue(i[0])
 	value2 := getValue(i[1])
 
 	setValue(value1+value2, i[2])
+
+	return nil
 }
 
-func subtract(i []js.Value) {
+func subtract(this js.Value, i []js.Value) interface{} {
 	value1 := getValue(i[0])
 	value2 := getValue(i[1])
 
 	setValue(value1-value2, i[2])
+
+	return nil
 }
 
-func getKeys(urls []js.Value) {
+func getKeys(this js.Value, urls []js.Value) interface{} {
 	resp, _ := http.Get(urls[0].String())
 	body, _ := ioutil.ReadAll(resp.Body)
 
 	fmt.Println(string(body))
+
+	return nil
 }
 
 func registerCallbacks() {
-	js.Global().Set("add", js.NewCallback(add))
-	js.Global().Set("subtract", js.NewCallback(subtract))
-	js.Global().Set("getKeys", js.NewCallback(getKeys))
+	js.Global().Set("add", js.FuncOf(add))
+	js.Global().Set("subtract", js.FuncOf(subtract))
+	js.Global().Set("getKeys", js.FuncOf(getKeys))
 }
 
 func main() {
