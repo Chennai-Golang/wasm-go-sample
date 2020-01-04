@@ -24,6 +24,8 @@ func add(this js.Value, i []js.Value) interface{} {
 	value1 := getValue(i[0])
 	value2 := getValue(i[1])
 
+	fmt.Println("Adding values: ", value1, " + ", value2)
+
 	setValue(value1+value2, i[2])
 
 	return nil
@@ -32,6 +34,8 @@ func add(this js.Value, i []js.Value) interface{} {
 func subtract(this js.Value, i []js.Value) interface{} {
 	value1 := getValue(i[0])
 	value2 := getValue(i[1])
+
+	fmt.Println("Subtracting values: ", value1, " + ", value2)
 
 	setValue(value1-value2, i[2])
 
